@@ -37,7 +37,7 @@ export default function RegisterPage() {
         const error = await response.json();
         setError(error.message || 'Something went wrong');
       }
-    } catch (_error) {
+    } catch {
       setError('Failed to register. Please try again.');
     } finally {
       setIsLoading(false);

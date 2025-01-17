@@ -33,7 +33,7 @@ export default function SuccessPage() {
           const data = await response.json();
           setError(data.message || 'Failed to create account');
         }
-      } catch (_error) {
+      } catch {
         setError('Failed to create account. Please try again later.');
       } finally {
         setIsCreatingUser(false);

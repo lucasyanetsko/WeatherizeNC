@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     });
 
     // Remove password from response
-    const { password: _unused, ...userWithoutPassword } = user;
+    const { password: dbPassword, ...userWithoutPassword } = user;
     console.log('User created successfully:', email);
 
     return NextResponse.json(userWithoutPassword, { status: 201 });
