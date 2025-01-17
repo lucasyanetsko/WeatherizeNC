@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { sendWelcomeEmail } from '@/lib/email';
 import { removePassword } from '@/app/utils/user';
