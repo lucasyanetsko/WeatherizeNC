@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient, User } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { removePassword } from '@/app/utils/user';
 
 const prisma = new PrismaClient();
-
-type UserWithoutPassword = Omit<User, 'password'>;
 
 export async function POST(request: Request) {
   try {
@@ -46,8 +45,7 @@ export async function POST(request: Request) {
     });
 
     // Remove password from response
-    const { password: _, ...rest } = user;
-    const userWithoutPassword: UserWithoutPassword = rest;
+    const userWithoutPassword = removePassword(user);
 
     return NextResponse.json(userWithoutPassword, { status: 201 });
   } catch (error) {
