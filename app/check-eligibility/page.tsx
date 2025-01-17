@@ -60,6 +60,7 @@ export default function CheckEligibility() {
                     id="firstName"
                     name="firstName"
                     required
+                    defaultValue={formData.contact.firstName}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent text-black"
                   />
                 </div>
@@ -70,6 +71,7 @@ export default function CheckEligibility() {
                     id="lastName"
                     name="lastName"
                     required
+                    defaultValue={formData.contact.lastName}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent text-black"
                   />
                 </div>
@@ -81,6 +83,7 @@ export default function CheckEligibility() {
                   id="email"
                   name="email"
                   required
+                  defaultValue={formData.contact.email}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent text-black"
                 />
               </div>
@@ -91,6 +94,7 @@ export default function CheckEligibility() {
                   id="phone"
                   name="phone"
                   required
+                  defaultValue={formData.contact.phone}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent text-black"
                 />
               </div>
