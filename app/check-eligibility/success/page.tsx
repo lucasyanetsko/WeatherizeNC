@@ -1,4 +1,4 @@
-// Success page for eligibility check
+// Success page for eligibility check - handles user creation and displays confirmation
 'use client'
 
 import { useEffect, useState } from 'react';
