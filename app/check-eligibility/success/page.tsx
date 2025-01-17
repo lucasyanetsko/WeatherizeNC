@@ -1,3 +1,4 @@
+// Success page for eligibility check
 'use client'
 
 import { useEffect, useState } from 'react';
