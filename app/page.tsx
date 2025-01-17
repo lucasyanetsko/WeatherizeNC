@@ -31,7 +31,10 @@ export default function Home() {
               <li><Link href="https://www.deq.nc.gov/energy-climate/state-energy-office/weatherization-assistance-program" target="_blank" rel="noopener noreferrer" className="text-green-800 hover:text-green-600 font-medium">About</Link></li>
               <li><Link href="/resources" className="text-green-800 hover:text-green-600 font-medium">Resources</Link></li>
               <li><Link href="/contact" className="text-green-800 hover:text-green-600 font-medium">Contact</Link></li>
-              <li><Link href="/check-eligibility" className="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors font-medium">Apply</Link></li>
+              <div className="flex space-x-4 items-center">
+                <li><Link href="/check-eligibility" className="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors font-medium">Apply</Link></li>
+                <li><Link href="/login" className="bg-white text-green-800 px-4 py-2 rounded hover:bg-gray-100 font-medium transition-colors border border-blue-800">Login</Link></li>
+              </div>
             </ul>
           </nav>
         </header>
@@ -39,7 +42,7 @@ export default function Home() {
 
       {/* Title Section */}
       <div className="container mx-auto px-4 mt-8">
-        <div className="bg-blue-400 py-4 rounded-2xl shadow-lg relative overflow-hidden h-48">
+        <div className="bg-blue-400 rounded-2xl shadow-lg relative overflow-hidden h-48">
           {/* Weather Animation Container */}
           <div className="absolute inset-0 overflow-hidden">
             {/* Moving Clouds */}
@@ -50,6 +53,12 @@ export default function Home() {
               <div className="cloud-4">☁️</div>
               <div className="cloud-5">☁️</div>
               <div className="cloud-6">☁️</div>
+              <div className="cloud-7">☁️</div>
+              <div className="cloud-8">☁️</div>
+              <div className="cloud-9">☁️</div>
+              <div className="cloud-10">☁️</div>
+              <div className="cloud-11">☁️</div>
+              <div className="cloud-12">☁️</div>
             </div>
             {/* Rain */}
             <div className="rain">
@@ -63,7 +72,7 @@ export default function Home() {
             </div>
             {/* Snow */}
             <div className="snow">
-              {[...Array(50)].map((_, i) => (
+              {[...Array(30)].map((_, i) => (
                 <div key={`snow-${i}`} className="snow-flake" style={{ 
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -79,16 +88,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-blue-400/30"></div>
 
           <div className="relative flex flex-col items-center justify-center h-full">
-            {/* Moving Clouds */}
-            <div className="clouds">
-              <div className="cloud-1">☁️</div>
-              <div className="cloud-2">☁️</div>
-              <div className="cloud-3">☁️</div>
-              <div className="cloud-4">☁️</div>
-              <div className="cloud-5">☁️</div>
-              <div className="cloud-6">☁️</div>
-            </div>
-            
             <h1 className="text-6xl text-white font-medium text-center tracking-wide drop-shadow-lg" style={{ textShadow: '1px 1px 0 #1e3a8a, -1px -1px 0 #1e3a8a, 1px -1px 0 #1e3a8a, -1px 1px 0 #1e3a8a' }}>
               <span className="inline-block transform hover:scale-105 transition-transform duration-300">W</span>
               <span className="inline-block transform hover:scale-105 transition-transform duration-300">e</span>
@@ -104,7 +103,7 @@ export default function Home() {
               <span className="inline-block transform hover:scale-105 transition-transform duration-300">C</span>
             </h1>
             <div className="text-white text-2xl mt-2 opacity-90">
-              <span className="text-3xl">⚡</span> Powered by <span className="font-[var(--font-montserrat)] font-bold text-3xl" style={{ color: '#344575' }}>everblue</span>
+              <span className="text-3xl">⚡</span> Powered by <span className="font-bold text-3xl" style={{ color: '#344575' }}>everblue</span>
             </div>
           </div>
         </div>

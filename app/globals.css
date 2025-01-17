@@ -2,6 +2,166 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Weather Animations */
+.clouds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud-1, .cloud-2, .cloud-3, .cloud-4, .cloud-5, .cloud-6,
+.cloud-7, .cloud-8, .cloud-9, .cloud-10, .cloud-11, .cloud-12 {
+  position: absolute;
+  opacity: 0.8;
+  animation: float 20s linear infinite;
+}
+
+/* Scatter clouds across the width with different sizes */
+.cloud-1 { 
+  top: 15%; 
+  font-size: 85px; 
+  animation-delay: 0s;
+  left: 10%;
+}
+.cloud-2 { 
+  top: 35%; 
+  font-size: 45px; 
+  animation-delay: -12s;
+  left: 45%;
+}
+.cloud-3 { 
+  top: 55%; 
+  font-size: 75px; 
+  animation-delay: -6s;
+  left: 75%;
+}
+.cloud-4 { 
+  top: 25%; 
+  font-size: 65px; 
+  animation-delay: -15s;
+  left: 30%;
+}
+.cloud-5 { 
+  top: 45%; 
+  font-size: 55px; 
+  animation-delay: -9s;
+  left: 60%;
+}
+.cloud-6 { 
+  top: 65%; 
+  font-size: 70px; 
+  animation-delay: -3s;
+  left: 90%;
+}
+/* Additional clouds with varied positions */
+.cloud-7 { 
+  top: 20%; 
+  font-size: 80px; 
+  animation-delay: -8s;
+  left: 25%;
+}
+.cloud-8 { 
+  top: 50%; 
+  font-size: 50px; 
+  animation-delay: -4s;
+  left: 70%;
+}
+.cloud-9 { 
+  top: 30%; 
+  font-size: 60px; 
+  animation-delay: -11s;
+  left: 15%;
+}
+.cloud-10 { 
+  top: 60%; 
+  font-size: 45px; 
+  animation-delay: -7s;
+  left: 85%;
+}
+.cloud-11 { 
+  top: 40%; 
+  font-size: 70px; 
+  animation-delay: -14s;
+  left: 40%;
+}
+.cloud-12 { 
+  top: 70%; 
+  font-size: 55px; 
+  animation-delay: -2s;
+  left: 55%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.rain-drop {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  animation: rain 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rain {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.snow-flake {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: snow 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow {
+  from {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  to {
+    transform: translateY(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  font-size: 7rem;
+  animation: shine 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 100, 0.9)) 
+         drop-shadow(0 0 50px rgba(255, 200, 0, 0.5));
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes shine {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

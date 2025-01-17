@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { NC_COUNTIES } from '../../constants/counties'
 import { useFormContext } from '../../context/FormContext'
 
 export default function AddressStep() {
@@ -14,7 +13,8 @@ export default function AddressStep() {
     const formElements = e.target as HTMLFormElement
     const data = {
       street: formElements.streetAddress.value,
-      county: formElements.county.value,
+      city: formElements.city.value,
+      state: 'NC', // Since this is NC specific
       zipCode: formElements.zipCode.value,
     }
     updateFormData('address', data)
@@ -62,19 +62,15 @@ export default function AddressStep() {
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="county" className="block text-sm font-medium text-gray-700 mb-1">County</label>
-                  <select
-                    id="county"
-                    name="county"
+                  <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
                     required
-                    defaultValue={formData.address.county}
+                    defaultValue={formData.address.city}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent text-black"
-                  >
-                    <option value="">Select County</option>
-                    {NC_COUNTIES.map((county) => (
-                      <option key={county} value={county.toLowerCase()}>{county}</option>
-                    ))}
-                  </select>
+                  />
                 </div>
                 <div>
                   <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700 mb-1">ZIP Code</label>

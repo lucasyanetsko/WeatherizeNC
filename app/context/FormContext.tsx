@@ -11,23 +11,19 @@ interface FormData {
   }
   address: {
     street: string
-    county: string
+    city: string
+    state: string
     zipCode: string
   }
   income: {
+    householdSize: number
     annualIncome: number
-    householdMembers: number
-    verificationFile: File | null
   }
 }
 
-type FormDataKey = keyof FormData
-type FormDataValue<K extends FormDataKey> = FormData[K]
-
 interface FormContextType {
   formData: FormData
-  updateFormData: <K extends FormDataKey>(step: K, data: FormDataValue<K>) => void
-  resetForm: () => void
+  updateFormData: (step: keyof FormData, data: any) => void
 }
 
 const initialFormData: FormData = {
@@ -35,18 +31,18 @@ const initialFormData: FormData = {
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
+    phone: ''
   },
   address: {
     street: '',
-    county: '',
-    zipCode: '',
+    city: '',
+    state: '',
+    zipCode: ''
   },
   income: {
-    annualIncome: 0,
-    householdMembers: 1,
-    verificationFile: null,
-  },
+    householdSize: 0,
+    annualIncome: 0
+  }
 }
 
 const FormContext = createContext<FormContextType | undefined>(undefined)
@@ -54,22 +50,18 @@ const FormContext = createContext<FormContextType | undefined>(undefined)
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const [formData, setFormData] = useState<FormData>(initialFormData)
 
-  const updateFormData = <K extends FormDataKey>(step: K, data: FormDataValue<K>) => {
+  const updateFormData = (step: keyof FormData, data: any) => {
     setFormData(prev => ({
       ...prev,
       [step]: {
         ...prev[step],
-        ...data,
-      },
+        ...data
+      }
     }))
   }
 
-  const resetForm = () => {
-    setFormData(initialFormData)
-  }
-
   return (
-    <FormContext.Provider value={{ formData, updateFormData, resetForm }}>
+    <FormContext.Provider value={{ formData, updateFormData }}>
       {children}
     </FormContext.Provider>
   )

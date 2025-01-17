@@ -9,14 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.7.4",
+    "@prisma/client": "^6.2.1",
+    "@sendgrid/mail": "^8.1.4",
+    "@types/nodemailer": "^6.4.17",
+    "bcryptjs": "^2.4.3",
     "next": "15.1.4",
+    "next-auth": "^4.24.11",
+    "nodemailer": "^6.9.16",
+    "prisma": "^6.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.17.14",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
