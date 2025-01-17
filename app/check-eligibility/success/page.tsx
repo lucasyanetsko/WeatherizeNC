@@ -32,7 +32,7 @@ export default function SuccessPage() {
           const data = await response.json();
           setError(data.message || 'Failed to create account');
         }
-      } catch (err) {
+      } catch (error) {
         setError('Failed to create account. Please try again later.');
       } finally {
         setIsCreatingUser(false);
@@ -97,7 +97,7 @@ export default function SuccessPage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-800 mb-1">Check Your Email</h3>
-                  <p className="text-gray-600">We've sent your login credentials to {formData.contact.email}. Please check your inbox (and spam folder).</p>
+                  <p className="text-gray-600">We&apos;ve sent your login credentials to {formData.contact.email}. Please check your inbox (and spam folder).</p>
                 </div>
               </div>
               <div className="flex items-start">
@@ -115,7 +115,7 @@ export default function SuccessPage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-800 mb-1">Next Steps</h3>
-                  <p className="text-gray-600">If pre-qualified, you'll be able to complete the full application after logging in.</p>
+                  <p className="text-gray-600">If pre-qualified, you&apos;ll be able to complete the full application after logging in.</p>
                 </div>
               </div>
             </div>

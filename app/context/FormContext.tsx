@@ -23,7 +23,8 @@ interface FormData {
 
 interface FormContextType {
   formData: FormData
-  updateFormData: (step: keyof FormData, data: any) => void
+  updateFormData: (section: keyof FormData, data: Record<string, string>) => void
+  resetFormData: () => void
 }
 
 const initialFormData: FormData = {
@@ -50,18 +51,22 @@ const FormContext = createContext<FormContextType | undefined>(undefined)
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const [formData, setFormData] = useState<FormData>(initialFormData)
 
-  const updateFormData = (step: keyof FormData, data: any) => {
+  const updateFormData = (section: keyof FormData, data: Record<string, string>) => {
     setFormData(prev => ({
       ...prev,
-      [step]: {
-        ...prev[step],
+      [section]: {
+        ...prev[section],
         ...data
       }
     }))
   }
 
+  const resetFormData = () => {
+    setFormData(initialFormData)
+  }
+
   return (
-    <FormContext.Provider value={{ formData, updateFormData }}>
+    <FormContext.Provider value={{ formData, updateFormData, resetFormData }}>
       {children}
     </FormContext.Provider>
   )

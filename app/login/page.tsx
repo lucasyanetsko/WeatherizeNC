@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -32,9 +33,11 @@ export default function LoginPage() {
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
         <div className="text-center">
           <Link href="/" className="inline-block mb-6">
-            <img
+            <Image
               src="/deq-logo.png"
               alt="DEQ North Carolina Logo"
+              width={48}
+              height={48}
               className="h-12 w-auto mx-auto"
             />
           </Link>
@@ -86,9 +89,7 @@ export default function LoginPage() {
           </div>
           
           <div className="text-center">
-            <Link href="/register" className="text-sm text-green-800 hover:text-green-700">
-              Don't have an account? Register here
-            </Link>
+            <p className="text-gray-600">Don&apos;t have an account? <Link href="/register" className="text-green-800 hover:text-green-700">Sign up</Link></p>
           </div>
         </form>
       </div>

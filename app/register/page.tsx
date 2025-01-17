@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function RegisterPage() {
         const error = await response.json();
         setError(error.message || 'Something went wrong');
       }
-    } catch (err) {
+    } catch (error) {
       setError('Failed to register. Please try again.');
     } finally {
       setIsLoading(false);
@@ -48,9 +49,11 @@ export default function RegisterPage() {
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
         <div className="text-center">
           <Link href="/" className="inline-block mb-6">
-            <img
+            <Image
               src="/deq-logo.png"
               alt="DEQ North Carolina Logo"
+              width={48}
+              height={48}
               className="h-12 w-auto mx-auto"
             />
           </Link>
