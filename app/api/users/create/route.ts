@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { sendWelcomeEmail } from '@/lib/email';
 
 const prisma = new PrismaClient();
+
+type UserWithoutPassword = Omit<User, 'password'>;
 
 export async function POST(request: Request) {
   try {
@@ -66,7 +68,8 @@ export async function POST(request: Request) {
     });
 
     // Remove password from response
-    const { password: pwd, ...userWithoutPassword } = user as { password: string; [key: string]: any };
+    const { password: _, ...rest } = user;
+    const userWithoutPassword: UserWithoutPassword = rest;
     console.log('User created successfully:', email);
 
     return NextResponse.json(userWithoutPassword, { status: 201 });
