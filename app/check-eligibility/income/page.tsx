@@ -1,11 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useFormContext } from '../../context/FormContext'
 
 export default function IncomeStep() {
-  const router = useRouter()
   const { formData, updateFormData } = useFormContext()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,8 +19,6 @@ export default function IncomeStep() {
     }
     
     updateFormData('income', data)
-    
-    // Force a hard navigation to the success page
     document.location.pathname = '/check-eligibility/success'
   }
 

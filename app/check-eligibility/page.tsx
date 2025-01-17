@@ -1,16 +1,26 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useFormContext } from '../context/FormContext'
 
 export default function CheckEligibility() {
-  const router = useRouter();
+  const router = useRouter()
+  const { formData, updateFormData } = useFormContext()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    router.push('/check-eligibility/address');
-  };
+    e.preventDefault()
+    
+    const formElements = e.target as HTMLFormElement
+    const data = {
+      firstName: formElements.firstName.value,
+      lastName: formElements.lastName.value,
+      email: formElements.email.value,
+      phone: formElements.phone.value
+    }
+    
+    updateFormData('contact', data)
+    router.push('/check-eligibility/address')
+  }
 
   return (
     <main className="min-h-screen bg-gray-50 py-12">

@@ -17,13 +17,16 @@ interface FormData {
   income: {
     annualIncome: number
     householdMembers: number
-    verificationFile?: File
+    verificationFile: File | null
   }
 }
 
+type FormDataKey = keyof FormData
+type FormDataValue<K extends FormDataKey> = FormData[K]
+
 interface FormContextType {
   formData: FormData
-  updateFormData: (step: keyof FormData, data: any) => void
+  updateFormData: <K extends FormDataKey>(step: K, data: FormDataValue<K>) => void
   resetForm: () => void
 }
 
@@ -42,7 +45,7 @@ const initialFormData: FormData = {
   income: {
     annualIncome: 0,
     householdMembers: 1,
-    verificationFile: undefined,
+    verificationFile: null,
   },
 }
 
@@ -51,7 +54,7 @@ const FormContext = createContext<FormContextType | undefined>(undefined)
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const [formData, setFormData] = useState<FormData>(initialFormData)
 
-  const updateFormData = (step: keyof FormData, data: any) => {
+  const updateFormData = <K extends FormDataKey>(step: K, data: FormDataValue<K>) => {
     setFormData(prev => ({
       ...prev,
       [step]: {
