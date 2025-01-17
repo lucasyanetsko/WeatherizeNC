@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       email,
     });
 
-    if (!emailResult.success) {
+    if (!emailResult.success || !emailResult.password) {
       console.error('Failed to send welcome email:', emailResult.error);
       return NextResponse.json(
         { message: 'Failed to send welcome email' },
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     });
 
     // Remove password from response
-    const { password, ...userWithoutPassword } = user;
+    const { password: userPassword, ...userWithoutPassword } = user;
     console.log('User created successfully:', email);
 
     return NextResponse.json(userWithoutPassword, { status: 201 });

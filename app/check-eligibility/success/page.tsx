@@ -80,7 +80,7 @@ export default function SuccessPage() {
                 </svg>
               </div>
               <h1 className="text-3xl font-medium text-gray-800 mb-4">Application Submitted!</h1>
-              <p className="text-gray-600">Thank you for submitting your pre-qualification application. Here's what happens next:</p>
+              <p className="text-gray-600">Thank you for submitting your pre-qualification application. Here&apos;s what happens next:</p>
             </div>
 
             {error && (
